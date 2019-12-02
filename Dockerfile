@@ -13,6 +13,9 @@ EXPOSE 8080
 # The application's jar file
 #ARG JAR_FILE=target/websocket-demo-0.0.1-SNAPSHOT.jar
 
+# Active SprinBoot profile (use command instead)
+# ENV SPRING_PROFILES_ACTIVE=gke
+
 # Add the application's jar to the container
 #ADD ${JAR_FILE} websocket-demo.jar
 COPY target/websocket-demo-0.0.1-SNAPSHOT.jar /websocket-demo.jar

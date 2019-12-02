@@ -16,11 +16,14 @@ spec:
     spec:                     # Spec for the containers that will be run in the Pods
       containers:
       - name: chat-server
-        image: callicoder/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
+        image: asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:latest
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
             containerPort: 8080 # The port that the container exposes
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: gke
 ---
 apiVersion: v1                # API version
 kind: Service                 # Type of the kubernetes resource

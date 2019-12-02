@@ -5,4 +5,9 @@ docker build -t asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:la
 
 docker run --rm --network internal-container-network --name postgres121 -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 
-docker run --rm --network internal-container-network -p 8080:8080 asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:latest
+docker run --rm --network internal-container-network -p 8080:8080 -e SPRING_PROFILES_ACTIVE=gke asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:latest
+
+gcloud auth login
+gcloud auth configure-docker
+docker login -u oauth2accesstoken -p "$(gcloud auth print-access-token)" https://asia.gcr.io
+gcloud docker -- push asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:latest
