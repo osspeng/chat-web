@@ -8,4 +8,5 @@ public interface IMessageService {
 
     List<ChatMessage> findAll();
     void saveMessage(ChatMessage message);
+    Iterable<ChatMessage> getHistroy(ChatMessage message);
 }

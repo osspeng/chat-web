@@ -25,4 +25,11 @@ public class MessageService implements IMessageService {
 	public void saveMessage(ChatMessage message) {
 		repository.save(message);
 	}
+
+	@Override
+	public Iterable<ChatMessage> getHistroy(ChatMessage message) {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+		
+	}
 }
