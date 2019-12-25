@@ -1,41 +1,55 @@
 apiVersion: apps/v1           # API version
 kind: Deployment              # Type of kubernetes resource
 metadata:
-  name: chat-server           # Name of the kubernetes resource
+  name: web-chat           # Name of the kubernetes resource
   labels:                     # Labels that will be applied to this resource
-    app: chat-server
+    app: web-chat
 spec:
   replicas: 1                 # No. of replicas/pods to run in this deployment
   selector:
     matchLabels:              # The deployment applies to any pods mayching the specified labels
-      app: chat-server
+      app: web-chat
   template:                   # Template for creating the pods in this deployment
     metadata:
       labels:                 # Labels that will be applied to each Pod in this deployment
-        app: chat-server
+        app: web-chat
     spec:                     # Spec for the containers that will be run in the Pods
       containers:
-      - name: chat-server
-        image: asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-demo:latest
+      - name: web-chat
+        image: asia.gcr.io/jasonpengtw-gke-1/web-chat:latest
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
             containerPort: 8080 # The port that the container exposes
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: gke
+            value: stage
+          - name: DB_URL
+            value: jdbc:postgresql://postgres-service:5432/postgres?prepareThreshold=0
+          - name: DB_USERNAME
+            value: postgres
+          - name: DB_PASSWORD
+            value: postgres
 ---
 apiVersion: v1                # API version
 kind: Service                 # Type of the kubernetes resource
 metadata:                     
-  name: chat-server           # Name of the kubernetes resource
+  name: web-chat           # Name of the kubernetes resource
   labels:                     # Labels that will be applied to this resource
-    app: chat-server
+    app: web-chat
 spec:                         
   type: NodePort              # The service will be exposed by opening a Port on each node and proxying it. 
   selector:
-    app: chat-server          # The service exposes Pods with label `app=polling-app-server`
+    app: web-chat          # The service exposes Pods with label `app=polling-app-server`
   ports:                      # Forward incoming connections on port 8080 to the target port 8080
   - name: http
     port: 8080
     targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: ExternalName
+  externalName: 172.30.48.3
