@@ -9,7 +9,7 @@ steps:
 ##  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
 ##  - 'CLOUDSDK_CONTAINER_CLUSTER=stage-cluster'
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['patch', 'deployment', 'web-chat', '-p', '"{\"spec\": {\"template\": {\"metadata\": { \"labels\": {  \"redeploy\": \"$(date +%s)\"}}}}}"']
+  args: ['patch', 'deployment', 'web-chat', '-p', '"{\"spec\": {\"template\": {\"metadata\": { \"labels\": {  \"redeploy\": \"$(date +%s)\"}}}}}"', '-n', 'web-chat']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=stage-cluster'

@@ -17,7 +17,8 @@ spec:
       containers:
       - name: web-chat
         image: asia.gcr.io/jasonpengtw-gke-1/web-chat:latest
-        imagePullPolicy: IfNotPresent
+#        imagePullPolicy: IfNotPresent
+#        imagePullPolicy: Always
         ports:
           - name: http
             containerPort: 8080 # The port that the container exposes
