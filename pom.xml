@@ -165,8 +165,7 @@
 			<extension>
 				<groupId>com.gkatzioura.maven.cloud</groupId>
 				<artifactId>google-storage-wagon</artifactId>
-				<!-- <version>1.7</version> -->
-				<version>1.8</version>
+				<version>1.7</version>
 			</extension>
 			<!-- <extension>
 				<groupId>com.google.cloud.buildartifacts</groupId>
