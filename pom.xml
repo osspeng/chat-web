@@ -26,7 +26,7 @@
 	</properties>
 
 	<repositories>
-		<repository>
+		<!-- <repository>
 			<id>my-repository</id>
 			<url>buildartifacts://maven.pkg.dev/jasonpengtw-gke-1/chat-web</url>
 			<releases>
@@ -36,18 +36,17 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</repository>
-		<!-- <repository>
+		</repository> -->
+		<repository>
 			<id>my-repo-bucket-release</id>
 			<url>gs://jasonpengtw-gke-1-mavenrepo/external</url>
 			<releases>
 				<enabled>true</enabled>
-				TODO figure out why checksums do not match when artifact pulled 
-					from GCP
 				<checksumPolicy>ignore</checksumPolicy>
 			</releases>
-		</repository> -->
+		</repository>
 	</repositories>
+	
 	<distributionManagement>
 		<snapshotRepository>
 			<id>my-repo-bucket-snapshot</id>
@@ -163,17 +162,17 @@
 			</plugin>
 		</plugins>
 		<extensions>
-			<!-- <extension>
+			<extension>
 				<groupId>com.gkatzioura.maven.cloud</groupId>
 				<artifactId>google-storage-wagon</artifactId>
-				version 1.8 seems to produce exception, ticket logged
-				<version>1.7</version>
-			</extension> -->
-			<extension>
+				<!-- <version>1.7</version> -->
+				<version>1.8</version>
+			</extension>
+			<!-- <extension>
 				<groupId>com.google.cloud.buildartifacts</groupId>
 				<artifactId>buildartifacts-maven-wagon</artifactId>
 				<version>1.2.1</version>
-			</extension>
+			</extension> -->
 		</extensions>
 	</build>
 </project>
