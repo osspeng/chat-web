@@ -19,3 +19,10 @@ gcloud docker -- push asia.gcr.io/jasonpengtw-gke-1/spring-boot-websocket-chat-d
 docker run --name postgres121 -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 docker exec -it postgres121 /bin/bash
 psql -U postgres
+
+
+## Cloud Run
+kubectl create ns test
+gcloud beta run deploy webchat --platform gke --cluster stage-cluster --cluster-location asia-east1-a \
+  --namespace test --image=asia.gcr.io/jasonpengtw-gke-1/web-chat:latest \
+  --set-env-vars SPRING_PROFILES_ACTIVE=stage,DB_URL=jdbc:postgresql://postgres-service:5432/postgres?prepareThreshold=0,DB_USERNAME=postgres,DB_PASSWORD=postgres
