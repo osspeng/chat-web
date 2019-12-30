@@ -2,5 +2,5 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['container', 'clusters', 'get-credentials', 'prod-cluster', '--zone', 'asia-east1-a', '--project', 'jasonpengtw-gke-1']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['alpha', 'run', 'deploy', '$REPO_NAME', '--platform', 'gke', '--cluster', 'prod-cluster', '--cluster-location', 'asia-east1-a', '--image', 'asia.gcr.io/jasonpengtw-gke-1/web-chat:latest', '--set-env-vars', 'SPRING_PROFILES_ACTIVE=stage,DB_URL=jdbc:postgresql://postgres-service:5432/postgres?prepareThreshold=0,DB_USERNAME=postgres,DB_PASSWORD=postgres', '--no-traffic', '--quiet']
+  args: ['alpha', 'run', 'deploy', '$REPO_NAME', '--platform', 'gke', '--cluster', 'prod-cluster', '--cluster-location', 'asia-east1-a', '--image', 'asia.gcr.io/jasonpengtw-gke-1/web-chat:latest', '--set-env-vars', 'SPRING_PROFILES_ACTIVE=production,DB_URL=jdbc:postgresql://postgres-service:5432/postgres?prepareThreshold=0,DB_USERNAME=postgres,DB_PASSWORD=postgres', '--no-traffic', '--quiet']
 images: ['asia.gcr.io/$PROJECT_ID/web-chat:latest']
