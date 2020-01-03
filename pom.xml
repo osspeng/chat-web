@@ -38,8 +38,8 @@
 			</snapshots>
 		</repository> -->
 		<repository>
-			<id>my-repo-bucket-release</id>
-			<url>gs://jasonpengtw-gke-1-mavenrepo/external</url>
+			<id>my-repo-bucket-external</id>
+			<url>gs://jasonpengtw-gke-1-mavenrepo/external/repository/</url>
 			<releases>
 				<enabled>true</enabled>
 				<checksumPolicy>ignore</checksumPolicy>
