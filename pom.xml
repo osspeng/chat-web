@@ -26,17 +26,9 @@
 	</properties>
 
 	<repositories>
-		<!-- <repository>
-			<id>my-repository</id>
-			<url>buildartifacts://maven.pkg.dev/jasonpengtw-gke-1/chat-web</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository> -->
+		<!-- <repository> <id>my-repository</id> <url>buildartifacts://maven.pkg.dev/jasonpengtw-gke-1/chat-web</url> 
+			<releases> <enabled>true</enabled> <updatePolicy>always</updatePolicy> </releases> 
+			<snapshots> <enabled>true</enabled> </snapshots> </repository> -->
 		<repository>
 			<id>my-repo-bucket-external</id>
 			<url>gs://jasonpengtw-gke-1-mavenrepo-global/external/repository/</url>
@@ -46,7 +38,17 @@
 			</releases>
 		</repository>
 	</repositories>
-	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>my-repo-bucket-external</id>
+			<url>gs://jasonpengtw-gke-1-mavenrepo-global/external/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>my-repo-bucket-snapshot</id>
@@ -167,11 +169,8 @@
 				<artifactId>google-storage-wagon</artifactId>
 				<version>1.7</version>
 			</extension>
-			<!-- <extension>
-				<groupId>com.google.cloud.buildartifacts</groupId>
-				<artifactId>buildartifacts-maven-wagon</artifactId>
-				<version>1.2.1</version>
-			</extension> -->
+			<!-- <extension> <groupId>com.google.cloud.buildartifacts</groupId> <artifactId>buildartifacts-maven-wagon</artifactId> 
+				<version>1.2.1</version> </extension> -->
 		</extensions>
 	</build>
 </project>
