@@ -39,7 +39,7 @@
 		</repository> -->
 		<repository>
 			<id>my-repo-bucket-external</id>
-			<url>gs://jasonpengtw-gke-1-mavenrepo/external/repository/</url>
+			<url>gs://jasonpengtw-gke-1-mavenrepo-global/external/repository/</url>
 			<releases>
 				<enabled>true</enabled>
 				<checksumPolicy>ignore</checksumPolicy>
