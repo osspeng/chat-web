@@ -52,11 +52,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>my-repo-bucket-snapshot</id>
-			<url>gs://jasonpengtw-gke-1-mavenrepo/snapshot</url>
+			<url>gs://jasonpengtw-gke-1-mavenrepo-global/snapshot</url>
 		</snapshotRepository>
 		<repository>
 			<id>my-repo-bucket-release</id>
-			<url>gs://jasonpengtw-gke-1-mavenrepo/release</url>
+			<url>gs://jasonpengtw-gke-1-mavenrepo-global/release</url>
 		</repository>
 	</distributionManagement>
 
